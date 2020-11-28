@@ -1,4 +1,6 @@
-$(function() {
+$(function(){
+  
+})
     var form = layui.form
     var layer = layui.layer
     // form.verify({
@@ -19,16 +21,26 @@ $(function() {
   
     // 初始化用户的基本信息
     function initUserInfo(){
+        // $.ajax({
+        //     type:'get',
+        //     url:'/my/userinfo',
+        //     success:function(res){
+        //         if(res.status !==0){
+        //             return layer.msg('获取用户信息失败')
+        //         }
+        //         console.log(res);
+        //         form.val('formUserInfo',res.data)
+        //     }
+        // })
         $.ajax({
-            type:'get',
-            url:'/my/userinfo',
-            success:function(res){
-                if(res.status !==0){
-                    return layer.msg('获取用户信息失败')
-                }
-                console.log(res);
-                form.val('formUserInfo',res.data)
+          type:'get',
+          url:'/my/userinfo',
+          success:function(res){
+            if(res.status !=0){
+              return layer.msg('获取用户信息失败')
             }
+            form.val('formUserInfo',res.data)
+          }
         })
     }
     // function initUserInfo() {
@@ -50,7 +62,7 @@ $(function() {
     $('#btnReset').on('click', function(e) {
       // 阻止表单的默认重置行为
       e.preventDefault()
-      initUserInfo()
+      initUserInfo();
     })
   
     // 监听表单的提交事件
@@ -72,5 +84,5 @@ $(function() {
         }
       })
     })
-  })
+  
   

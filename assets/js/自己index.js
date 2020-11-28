@@ -1,7 +1,7 @@
 
     $(function(){
-    getUserInfo()
-    function getUserInfo() {
+   
+    window.getUserInfo=function () {
         $.ajax({
           method: 'GET',
           url: '/my/userinfo',
@@ -23,7 +23,7 @@
         layer.close(index);
       });
     })
-    function renderAvatar(uerInfo){
+    window.renderAvatar=function (uerInfo){
         var name =uerInfo.nickname ||uerInfo.username;
         $("#welcome").html("欢迎"+name);
         if(getUserInfo.user_pic==null){
@@ -34,6 +34,6 @@
           $(".text-avatar").hide();
         }
     }
-
+    getUserInfo()
     })
     
